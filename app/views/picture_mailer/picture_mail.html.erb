@@ -1,0 +1,10 @@
+<h1>Postが完了しました！</h1>
+
+<h4>name: <%= @picture.user.name %></h4>
+
+<h4>内容の確認</h4>
+
+<p><strong>Image</strong><br>
+<%= image_tag(@picture.image) if @picture.image.present? %></p>
+<p><strong>Comment</strong><br>
+<%= @picture.comment%></p>

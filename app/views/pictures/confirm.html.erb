@@ -1,0 +1,27 @@
+<h3>以下の内容でPost</h3>
+
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= form.hidden_field :picture %> 
+  <%= form.hidden_field :comment %>
+
+<p><strong>Image</strong><br><%= image_tag(@picture.image.url) if @picture.image.present? %>
+<%= hidden_field_tag :"cache[image]",@picture.image.cache_name%>
+<%= form.hidden_field :id %>
+
+<div>
+<p><strong>comment</strong></p>
+</div>
+<div>
+<p><%= @picture.comment %></p>
+</div>
+
+<div id="submit_btn">
+<%= form.submit "submit", :class=>"btn btn-primary btn-sm"%>
+</div>
+<% end %>
+
+<%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :picture %>
+  <%= form.hidden_field :comment %>
+  <%= form.submit "Back", name: 'back', :class=>"btn btn-primary btn-sm" %>
+<% end %>

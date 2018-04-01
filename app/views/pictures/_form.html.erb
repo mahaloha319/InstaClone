@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="contents">
+<%= form_with(model: @picture, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>  
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= form.label :image %>
+  <%= form.file_field :image, id: :picture_image %>
+  <%= form.hidden_field :image_cache %> <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述--!>
+  </div>
+
+  <div class="comment">
+    <%= form.label :comment %>
+  </div>    
+  <div class="comment">    
+    <%= form.text_area :comment, :size => "40x5" %>
+  </div>
+  <div id="create_btn">
+  <%= form.submit "create", :class=>"btn btn-primary btn-sm" %>
+  </div>
+<% end %>
+  <div id="back_to_list">
+  <%= link_to "Back to list", pictures_path, class: 'btn btn-primary btn-sm' %>
+  </div>
+  
+    </div>
+</div>

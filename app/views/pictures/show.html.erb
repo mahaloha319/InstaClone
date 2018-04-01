@@ -1,0 +1,27 @@
+<h1>Detail</h1>
+
+<p><%= @picture.user.name %>さんのPost</p>
+<p><strong>Image</strong><br>
+<%= image_tag(@picture.image_url) if @picture.image.present? %></p>
+<div>
+<p><strong>Comment</strong></p>
+</div>
+<div id="comment">
+<p><%= @picture.comment%></p>
+</div>
+
+<% unless @picture.user == current_user %>
+ <% if @favorite.present? %>
+  <div>
+    <%= link_to 'お気に入り解除する', favorite_path(picture_id: @picture.id), method: :delete, class: 'btn btn-danger' %>
+  </div>
+  <% else %>
+  <div>
+    <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+  </div>
+  <% end %>
+  
+<% end %>
+<div id="back_to_list">
+<%= link_to 'Back to List', pictures_path, class: 'btn btn-primary btn-sm' %>
+</div>

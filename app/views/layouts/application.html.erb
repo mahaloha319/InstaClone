@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramClone</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width"> <!--モバイルブラウザでのレイアウト制御する為の呪文。スマホサイトを作る際端末（デバイス = device）ごとの横幅（width）に合わせてねっていう意味--!>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+          
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">InstagramClone</a><!--ナビゲーションにサイト名を入れたパターン。navbar-header指定内に追加することでサイト名をリンクの前に入れることができ--!>
+      </div>
+      <div id="gnavi" class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <li><%= link_to "Profile", user_path(current_user.id) %></li>
+            <li><%= link_to "Post", new_picture_path %></li>
+            <li><%= link_to "List", pictures_path %></li>
+            <li><%= link_to "Favorite", favorite_path(current_user.id) %></li>
+            <li><%= link_to "Log out", session_path(current_user.id), method: :delete %></li> 
+          <div id="gnavi" class="collapse navbar-collapse navbar-right">
+          <% else %>
+            <li class="sign"><%= link_to "Sign up", new_user_path %></li>
+            <li class="sign"><%= link_to "Log in", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    </nav> 
+   <%= yield %>
+  </body>
+  <footer>
+   <p> © 2018 InstagramClone</p>
+  </footer>
+</html>

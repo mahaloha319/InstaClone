@@ -1,0 +1,17 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>Log in</h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+
+<div class="email">  
+  <%= f.email_field :email, :placeholder => "email address"%>
+</div>
+
+<div class="password">
+  <%= f.password_field :password, :placeholder => "password" %>
+</div>
+<br>
+  <%= f.submit "Log in", :id=>"btn_new", :class=>"btn btn-primary btn-sm" %>
+<% end %>

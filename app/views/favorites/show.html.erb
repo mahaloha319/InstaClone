@@ -1,0 +1,23 @@
+<div class="container">
+  
+<h1>Favorite!</h1>
+
+<% if @favorite_pictures.present? %>
+  <div class="contents">
+    <% @favorite_pictures.each do |t| %>
+      <p><strong>Name:</strong><%= t.user.name %>さん</p>
+      <p><strong>Image</strong></p>
+      <div class="image">
+      <p><%= image_tag(t.image) %></p>
+      </div>
+      <p><strong>Comment</strong></p>
+      <div id="comment_favorite">
+      <%= t.comment %>
+      </div>
+      <div class="favolite_clear_btn">
+      <%= link_to 'お気に入り解除', favorite_path(picture_id: t.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+      </div>
+      <% end %>
+  </div>
+<% end %>
+</div>

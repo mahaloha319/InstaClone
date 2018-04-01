@@ -1,0 +1,18 @@
+.btn {
+    background-color: #6495ED;
+    color: #fff;
+}
+
+/* navbar hover,focus時のテキストカラー */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: #fff;
+}
+
+.navbar-header{ 
+   height:60px ;
+}   
+
+.sign{
+  text-align: right;
+}

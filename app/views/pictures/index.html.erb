@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="contents">
+    <h1>Post list</h1>
+    <br>
+    <p><%= notice %></p>
+  
+    
+    <% @pictures.each do |picture| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-4"><%= image_tag(picture.image)%></div>
+          <div class="col-xs-12 col-sm-5 col-md-5" id="comment"></strong><%= picture.comment %></div>
+          <div class="col-xs-12 col-sm-1 col-md-1"><%= link_to 'Detail', picture_path(picture.id), class:"btn btn-primary btn-sm", id:"index_btn" %></div>
+        <% if picture.user_id == current_user.id %>
+          <div class="col-xs-12 col-sm-1 col-md-1"><%= link_to 'Edit', edit_picture_path(picture.id), class: "btn btn-primary btn-sm", id:"index_btn"  %></div>
+          <div class="col-xs-12 col-sm-1 col-md-1"><%= link_to 'Delete', picture_path(picture.id), method: :delete, data: {confirm:'本当に削除していいですか？'}, class:"btn btn-primary btn-sm", id:"index_btn" %></div>
+        <% end %>
+         </div>
+    <% end %>
+
+    <a class="btn btn-primary btn-sm" href="pictures/new" role="button">Back to</a>
+  </div>
+</div>
